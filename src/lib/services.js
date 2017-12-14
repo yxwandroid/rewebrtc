@@ -32,7 +32,9 @@ if(IS_BROWSER) {
   socket = io();
 } else {
   const socketIOClient = require('socket.io-client');
-  socket = socketIOClient('https://rewebrtc.herokuapp.com', {transports: ['websocket'], jsonp: false});
+ // socket = socketIOClient('https://rewebrtc.herokuapp.com', {transports: ['websocket'], jsonp: false});
+ //  socket = socketIOClient.connect('https://rewebrtc.herokuapp.com', {transports:['websocket']});
+  socket = socketIOClient.connect('https://react-native-webrtc.herokuapp.com', {transports: ['websocket']});
 }
 
 var configuration = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
@@ -266,7 +268,8 @@ function join(roomId, name, callbacks) {
   onFriendLeftCallback = callbacks.friendLeft;
   onFriendConnectedCallback = callbacks.friendConnected;
   onDataChannelMessageCallback = callbacks.dataChannelMessage;
-  socket.emit('join', {roomId, name}, function(result){
+  // socket.emit('join', {roomId, name}, function(result){
+  socket.emit('join',roomId, function(result){
     friends = result;
     console.log('Joins', friends);
     friends.forEach((friend) => {

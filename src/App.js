@@ -19,7 +19,7 @@ const logo= require("../image/Garena_Logo.png");
 
 const FRONT_CAMERA = true;
 const webRTCServices = require("./lib/services.js");
-const VIDEO_CONFERENCE_ROOM = "video_conference";
+const VIDEO_CONFERENCE_ROOM = "leedian";
 
 const SELF_STREAM_ID = "self_stream_id";
 
